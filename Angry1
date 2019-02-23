@@ -1,0 +1,158 @@
+#include "simpletools.h"                      // Include simple tools
+#include "servo.h"  
+
+int sw, i1, i2;
+void angry(void);
+void angry1(void);
+void angry2(void);
+void fix(void);
+
+//-------------------------------------------------------------------------------------Main--------------------------------------------------------------------------------------------
+
+int main()                                    // Main function
+{pause(2000);
+  sw=1;
+  high(26);                                       //Show that the program is about to start
+  pause(500);
+  low(26);
+  pause(500);
+  high(26);
+  pause(500);
+  low(26);
+  pause(500);
+  high(26);
+  pause(500);
+  low(26);
+  pause(500);
+  high(26);
+  pause(500);
+  low(26);
+  pause(2000);                             //End of warning
+  if(sw==1)
+    {angry();
+    }
+   pause(1000);
+   freqout(4,4000,1500); 
+}
+
+//-------------------------------------------------------------------------------------Angry Default State--------------------------------------------------------------------------------------------
+
+angry()
+{   high(1);                  
+    high(2);                  
+    sw==1;
+    while(sw==1)
+      { servo_speed(16,50);                                       // Default State
+         servo_speed(17,-50);
+         pause(1000);
+         servo_speed(16,-50);
+         servo_speed(17,50);
+         pause(1000);
+         servo_speed(16,50);                                      // Default State
+         servo_speed(17,-50);
+         pause(1000);
+         servo_speed(16,-50);
+         servo_speed(17,50);
+         pause(1000);  
+         servo_speed(16,50);
+         servo_speed(17,-50);
+         pause(1000);                                                 // Default State
+
+         i1=1;
+         pause(1000);
+         if(i1==1)
+            {angry1();
+             }
+         servo_speed(16,50);                                       // Go forward and backward
+         servo_speed(17,-50);
+         pause(1000);
+         servo_speed(16,-50);
+         servo_speed(17,50);
+         pause(1000);  
+         i2=1;
+         pause(2000);     
+         if(i2==1)
+            {angry2();
+            }                      
+         pause(2000);
+         sw=0;
+        }
+        return;
+ }
+ 
+ //-------------------------------------------------------------------------------------Angry state 1--------------------------------------------------------------------------------------------
+ 
+ void angry1()
+ {
+   freqout(4,500,1500);
+   pause(1000);
+   servo_speed(16,0);
+   servo_speed(17,0);
+   pause(3500);
+   servo_speed(16,50);
+   servo_speed(17,-50);
+   freqout(4,500,300);
+   pause(500);
+   servo_speed(16,0);
+   servo_speed(17,0);
+   freqout(4,500,1500);
+   freqout(4,500,1500);
+   freqout(4,500,1500);
+   pause(1000);
+   servo_speed(16,-50);
+   servo_speed(17,50);
+   pause(1000);
+   servo_speed(16,0);
+   servo_speed(17,0);
+   freqout(4,500,1500);
+   pause(500);
+   freqout(4,500,1500);
+   pause(500);
+   freqout(4,500,1500);
+   return;
+ }
+//-------------------------------------------------------------------------------------Angry State 2-------------------------------------------------------------------------------------------- 
+ void angry2()
+ {       servo_speed(16,-0);
+         servo_speed(17,0);
+         high(26);                                       //Show that the program is about to start
+         pause(500);
+        low(26);
+        pause(500);
+        high(26);                                       //Show that the program is about to start
+        pause(500);
+        low(26);
+       pause(500);
+      high(26);                                       //Show that the program is about to start
+        pause(500);
+       low(26);
+        pause(500);
+        high(26);                                       //Show that the program is about to start
+      pause(500);
+      low(26);
+      pause(500);
+ 
+  servo_speed(16,200); 
+   servo_speed(17,-200); 
+   freqout(4,500,1500);
+   pause(500);        
+   freqout(4,500,1500);   
+    pause(500);    
+   freqout(4,500,1500);   
+    pause(500);    
+   freqout(4,500,1500); 
+    pause(500);      
+   freqout(4,500,1500);   
+    pause(500);    
+   freqout(4,500,1500);   
+   pause(1500);
+   servo_speed(16,-100); 
+    servo_speed(17,100); 
+    pause(2000);
+   servo_speed(16,0); 
+    servo_speed(17,0);
+    pause(1000);
+  return;
+} 
+  
+  
